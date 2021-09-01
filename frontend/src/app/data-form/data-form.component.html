@@ -1,0 +1,64 @@
+<h3>View Timetable information for a course</h3>
+<form [formGroup]="form" (ngSubmit)="onButtonClicked2()">
+  <div>
+    <label for="subjectCode">
+      Subject Code:
+    </label>
+    <input id="subjectCode" name="subjectCode" maxlength="10" type="text" formControlName="subjectCode"/>
+  </div>
+  <div>
+    <label for="courseCode">
+      Course Code:
+    </label>
+  <input id="courseCode" name="courseCode" maxlength="10" type="text" formControlName="courseCode"/>
+  </div>
+
+  <div>
+    <label for="component">
+      Component:
+    </label>
+    <select id="view-timetable-component-select" name="component" type="text" formControlName="component" >
+      <option label=" "></option>
+      <option value="LEC">LEC</option>
+      <option value="LAB">LAB</option>
+      <option value="TUT">TUT</option>
+  </select>
+  </div>
+  <button type="submit" [disabled]="!form.valid">View</button>  <button type="button" (click)="hider()" [disabled]="!courseFound">Hide</button>
+
+  <div *ngIf="courseFound" class="timetable-view">
+    <div *ngFor="let timetable of timetables; index as i" >
+
+      <div [class]="i==0 ? 'LEC': i==1 ?'LAB' : 'TUT'" >
+      <p>Class Number: {{timetable.class_nbr}}</p>
+      <p>Duration: {{timetable.start_time}}-{{timetable.end_time}}</p>
+      <p>Component: {{timetable.ssr_component}}</p>
+      <p>Days: {{timetable.days}}</p>
+      <p>Class Section: {{timetable.class_section}}</p>
+<p *ngIf="timetable.descr!=''">Description: {{timetable.descr}}</p>
+</div>
+  </div>
+</div>
+<div *ngIf="hasError2">{{message}}</div>
+
+</form>
+
+<div>
+  <h3>Create a Schedule</h3>
+  <form [formGroup]="form2" (ngSubmit)="onButtonClicked()">
+    <div>
+      <label for="name">
+        Name:
+      </label>
+      <input id="name" name="name" maxlength="10" type="text" formControlName="name"/>
+    </div>
+    <button type="submit" [disabled]="!form2.valid">Create</button>
+
+    <div *ngIf="hasError">{{message}}</div>
+    <div *ngIf="isSuccessful">The schedule named {{ this.form2.get("name").value}} has been created successfully</div>
+  </form>
+</div>
+
+
+
+

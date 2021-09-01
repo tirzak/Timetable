@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <script  defer src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <h1>Hello! What do you want to do today?</h1>
+
+    <div id="course">
+        <h3>View course related Information</h3>
+        <div id="view-courses">
+            <label>View all courses and their descriptions: </label>
+            <button id= "view-courses-btn">View</button>
+            <button id= "hide-courses-btn">Hide</button>
+            <ul id="view-courses-list"></ul>
+            
+        </div>
+        <div id="view-courses-code">
+            <label >View all course codes for a subject: </label>
+            <input id= "view-courses-code-input"/>
+            <button id= "view-courses-code-btn">View</button>
+            <button id= "hide-courses-code-btn">Hide</button>
+            <ul id="view-courses-code-list"></ul>
+            
+            
+        </div>
+        <div id="view-timetable">
+            <h3>View Timetable Information for a Course</h3>
+            <label>Enter Subject Code:</label>
+            <input id="view-timetable-subject-input" maxlength="10"/>
+            <label>Enter Course Code:</label>
+            <input id="view-timetable-coursecode-input" maxlength="6"/>
+            <label>Select Component:</label>
+            <select id="view-timetable-component-select">
+                <option label=" "></option>
+                <option value="LEC">LEC</option>
+                <option value="LAB">LAB</option>
+                <option value="TUT">TUT</option>
+            </select>
+            <button id= "view-timetable-btn">View</button>
+            <button id= "hide-timetable-btn">Hide</button>
+            <ul id="view-timetable-div"></ul>
+        </div>
+     
+</div>
+    <div id="schedule">
+        <h3>Create or Delte Schedule(s)</h3>
+    <div id="create-schedule">
+        <label>Create a Schedule: </label>
+        <input id="create-schedule-input" maxlength="10"/>
+        <button id= "create-schedule-btn">Create</button>
+        <span id="create-schedule-span"></span>
+    </div>
+  
+    <div id="delete-a-schedule">
+        <label>Delete a Schedule: </label>
+        <input id="delete-a-schedule-input" maxlength="10"/>
+        <button id= "delete-a-schedule-btn">Delete</button>
+        <span id="delete-a-schedule-span"></span>
+        
+    </div>
+    <div id="delete-schedule">
+        <label>Delete all Schedules: </label>
+        <button id= "delete-schedule-btn">Delete</button>
+        <span id="delete-schedule-span"></span>
+        
+    </div>
+    </div>
+    <div id="modify-schedules">
+        <div id="add-pairs">
+            <h3>Add Courses to a Schedule</h3>
+            <div>
+            <label><b>Enter Schedule Name: </b></label>
+            <input id="add-pairs-schedulename-input" maxlength="10"/>
+            </div>
+            <div id="add-pairs-section">
+            <div>
+            <label>Enter Subject Code:</label>
+            <input id="add-pairs-subject-input" class="subjectClass" maxlength="10"/>
+            <label>Enter Course Code:</label>
+            <input id="add-pairs-coursecode-input" class="courseClass" maxlength="6"/>
+            
+        </div>
+        <div>
+            <label>Enter Subject Code:</label>
+            <input  class="subjectClass" maxlength="10"/>
+            <label>Enter Course Code:</label>
+            <input  class="courseClass" maxlength="6"/>
+            
+        </div>
+    </div>
+    <div>
+            <button id= "add-pairs-btn">Add More Courses</button>
+            <button id= "remove-pairs-btn">Remove a field</button>
+        </div>
+            <button id= "add-pairs-savebtn"><b>Save the schedule</b></button>
+            
+            <span id="add-pairs-span"></span>
+        </div>
+
+    </div>
+    <div>
+        <h3>View Schedule Information</h3>
+        <div>
+        <label><b>Enter Schedule Name: </b></label>
+        <input id="view-schedule-information-name-input" maxlength="10"/>
+        <button id= "view-schedule-information-savebtn">View Saved Courses</button>
+        <ol id="view-schedule-information-list"></ol>
+        </div>
+        <div id="view-schedule">
+            <label>View all Schedules: </label>
+            <button id= "view-schedule-btn">View</button>
+            <ul id="view-schedule-list"></ul>
+            
+        </div>
+    </div>
+   
+</body>
+</html>

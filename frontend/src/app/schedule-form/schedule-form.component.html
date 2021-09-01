@@ -1,0 +1,83 @@
+
+
+<h3>users</h3>
+<div *ngFor="let user of users">
+  <li><p>{{user.userid}} <b>{{user.email}}</b> {{user.displayname}}</p>
+    <p><b>Account Status:</b> {{user.status}} <b>Admin Status:</b> {{user.adminstatus}}</p>
+  </li>
+  <div>
+  <button *ngIf="!(user.adminstatus==='active')" (click)="addAdmins(user.userid,1)">Add as Admin</button>
+  <button *ngIf="user.adminstatus==='active'" (click)="addAdmins(user.userid,2)">Revoke Admin Status</button>
+  <button *ngIf="!(user.status==='active')" (click)="disable(user.userid,2)">Activate account</button>
+  <button *ngIf="user.status==='active'" (click)="disable(user.userid,1)">Disable account</button>
+</div>
+</div>
+<div>
+  <h3>Reviews Posted on the site:</h3>
+  <div *ngFor="let review of reviews">
+    <li>
+      <b>{{review.subjectcode}} {{review.coursecode}}</b> has a review
+
+   <p>"{{review.review}}" by {{review.reviewer}} at {{review.stamp}} id: {{review.reviewid}}</p>
+
+  </li>
+  <button *ngIf="review.reviewstatus" (click)="hideCourse(review.reviewid,1)">Hide</button>
+  <button *ngIf="!review.reviewstatus" (click)="hideCourse(review.reviewid,2)">Unhide</button>
+  </div>
+
+</div>
+<div>
+  <h3>Policies</h3>
+  <div>
+    <a routerLink="/new-policy">
+    <button>Create a new policy</button>
+
+  </a>
+  <a routerLink="/policy/4">
+    <button>View DMCA workflow</button>
+  </a>
+  <div>
+    <h4>Modify</h4>
+  <a routerLink="/edit-policy/1">
+    <button>AUP</button>
+  </a>
+  <a routerLink="/edit-policy/2">
+    <button>Privacy Policy</button>
+  </a>
+  <a routerLink="/edit-policy/3">
+    <button>DMCA</button>
+  </a>
+</div>
+  </div>
+</div>
+
+<div>
+  <h3>Log DMCA requests</h3>
+  <form [formGroup]="form" (ngSubmit)="disputesubmit()">
+    <div >
+      <label for="policys">
+        Which Type
+      </label>
+      <select id="type" name="type" type="text" formControlName="type"  >
+        <option value="Takedown Request">Takedown Request</option>
+        <option value="Infringement">Infringement</option>
+        <option value="Dispute Claim">Dispute Claim</option>
+    </select>
+    </div>
+
+    <div>
+      <div>
+      <label for="sname">Enter Review ID</label>
+      <input id="reviewid" maxlength="74" name="reviewid" type="text" formControlName="reviewid"/>
+    </div>
+    <div>
+      <label for="sname">Enter Date</label>
+      <input id="date" maxlength="34" name="date" type="text" formControlName="date" placeholder="YYYY-MM-DD"/>
+    </div>
+
+    </div>
+
+    <button type="submit" [disabled]="!form.valid">Log </button>
+
+  </form>
+</div>

@@ -1,0 +1,51 @@
+
+
+
+    <form [formGroup]="form" (ngSubmit)="onButtonClicked(form)">
+      <div>
+
+        <div *ngIf="isSignUp">
+          <label for="userID">
+          First Name
+        </label>
+        <input id="fname" name="fname" maxlength="20" type="text" formControlName="fname"/>
+        <label for="fname">
+          Last Name:
+        </label>
+        <input id="lname" name="lname" maxlength="20" type="text" formControlName="lname"/>
+        <label for="lname">
+          username:
+        </label>
+        <input id="userID" name="userID" maxlength="10" type="text" formControlName="userID"/>
+          </div>
+
+          <label for="email">
+           Email:
+          </label>
+          <input id="email" name="email" maxlength="40" type="text" formControlName="email"/>
+
+
+           <label for="password">
+            Password:
+           </label>
+           <input id="password" name="password" maxlength="14" type="password" formControlName="password"/>
+
+        <div>
+          <div *ngIf="isSignUp" class="log-button">
+            <button type="submit" [disabled]="!form.valid" >{{action}}</button>
+
+          </div>
+          <div *ngIf="isLogIn" class="log-button">
+          <button type="submit" >{{action}}</button>
+        </div>
+          <span *ngIf = "isLogIn" class="or">
+            or
+            <button href="#" (click)="action='signup'">Sign Up</button>
+          </span>
+          <span *ngIf = "isSignUp" class="or">
+            or
+            <button href="#" (click)="action='login'" >Log In</button>
+          </span>
+        </div>
+      </div>
+      </form>

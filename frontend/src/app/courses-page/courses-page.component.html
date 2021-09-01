@@ -1,0 +1,9 @@
+<h1>View Courses and their Description</h1>
+<div class="view-course-box">
+
+<div class="course-box" *ngFor="let course of courses">
+<h4 class="subjHead">Subject Code:</h4><p class="subjText"> {{course.subject}}</p>
+<p>Description: {{course.className}}</p>
+
+</div>
+</div>

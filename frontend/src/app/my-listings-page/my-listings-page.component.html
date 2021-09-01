@@ -1,0 +1,54 @@
+<div *ngIf="afAuth.user | async as user">
+  <p>{{user.displayName}}</p>
+</div>
+<div>
+  <a routerLink="/new-listing">
+  <button>Create a new list</button>
+</a>
+<a routerLink="/schedules">
+  <button>Change Password</button>
+</a>
+</div>
+<div *ngFor="let list of listings; index as z">
+  <h3>{{z+1}}.{{list.schedulename}}</h3>
+
+  <p *ngIf="list.description!==''">Description: {{list.description}}</p>
+  <p>Status: {{list.status}}</p>
+  <p>Last Modified: {{list.dateV}}</p>
+  <p>Number of courses: {{list.numberC}}</p>
+  <div *ngIf="expandDiv[z]" class="timeDiv">
+
+    <div *ngFor="let course of timeView; index as k">
+
+      <p><b>Subject Code: </b>{{course.subjectCode}} <b>Course Code:</b> {{course.courseCode}}</p>
+
+
+
+
+      <div>
+      <div>
+        <div  >
+          <div *ngFor="let timetable of times[k]; index as i ">
+          <div [class]="i==0 ? 'LEC': i==1 ?'LAB' : 'TUT'">
+          <p>Class Number: {{timetable.class_nbr}}</p>
+          <p>Duration: {{timetable.start_time}}-{{timetable.end_time}}</p>
+          <p>Component: {{timetable.ssr_component}}</p>
+          <p>Days: {{timetable.days}}</p>
+          <p>Class Section: {{timetable.class_section}}</p>
+     <p *ngIf="timetable.descr!=''">Description: {{timetable.descr}}</p>
+    </div>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div>
+    <button type="button" (click)="onViewClicked(z,list.scheduleid)">Change View</button>
+  <a routerLink = "/edit-listing/{{list.scheduleid}}">
+    <button>Edit</button>
+  </a>
+  <button (click)="onDeleteClicked(list.scheduleid)">Delete</button>
+</div>
+</div>

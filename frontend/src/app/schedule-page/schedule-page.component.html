@@ -1,0 +1,21 @@
+
+  <div *ngIf="afAuth.user|async">
+    <h2>Change Password here</h2>
+    <form [formGroup]="form2" (ngSubmit)="onButtonClicked()">
+      <div>
+        <label for="oldpass">
+          Old Password:
+        </label>
+        <input id="oldpass" maxlength="14" name="oldpass" type="password" formControlName="oldpass"/>
+      </div>
+      <div>
+        <label for="passchange">
+          New Password:
+        </label>
+        <input id="passchange" maxlength="14" name="passchange" type="password" formControlName="passchange"/>
+      </div>
+      <button type="submit" [disabled]="!form2.valid">Change</button>
+
+
+    </form>
+  </div>

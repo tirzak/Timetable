@@ -1,0 +1,33 @@
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul#view-courses-list li {
+    list-style: none;
+    display: block;
+    white-space: nowrap
+  } 
+
+ #view-courses{
+     height: 50%;
+     width: 50%;
+ } 
+ .lec-comp{
+     color: blue;
+ }
+ .lab-comp{
+     color: violet;
+ }
+ .tut-comp{
+    color: green;
+}

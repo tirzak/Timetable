@@ -1,0 +1,37 @@
+<div>
+  <a routerLink="/">
+    <h1 id="app-heading">TimeTable</h1>
+  </a>
+<div class="top-bar" *ngIf="auth.user | async">
+
+
+
+    <button id="my-listings-buttons" (click)="goToProfile()">My Schedules</button>
+
+
+  <a routerLink="/courses">
+    <button id="all-courses-buttons">View All Courses</button>
+  </a>
+  <a routerLink="/user-admin" *ngIf="isAadmin">
+    <button id="all-courses-buttons">Admin Dashboard</button>
+  </a>
+  <button (click)="signOutClicked()">Log Out</button>
+  </div>
+<div *ngIf="!(auth.user | async)" class="top-bar">
+
+
+  <a routerLink="/register-user">
+    <button id="create-user">Sign In</button>
+
+  </a>
+  <button (click)="signInGoogle()">Sign in with Google</button>
+
+  </div>
+  <a class="courseview" routerLink="/courseview">
+    <button id="courseview-button">Search Courses</button>
+
+  </a>
+
+
+</div>
+

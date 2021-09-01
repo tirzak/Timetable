@@ -1,0 +1,17 @@
+<div>
+<button (click)="myFunction2(1)">Acceptable Use Policy</button>
+<button (click)="myFunction2(2)"> Privacy Policy</button>
+<button (click)="myFunction2(3)">DMCA</button>
+</div>
+<div *ngIf="isAup">
+  <markdown>{{policies.aup}}</markdown>
+</div>
+<div *ngIf="isPrivacy">
+  <markdown>{{policies.privacy}}</markdown>
+</div>
+<div *ngIf="isDmca">
+  <markdown>{{policies.dmca}}</markdown>
+</div>
+<div *ngIf="isWorkf">
+  <markdown>{{policies.workf}}</markdown>
+</div>

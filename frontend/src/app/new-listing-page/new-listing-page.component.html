@@ -1,0 +1,10 @@
+<div>
+  <h2>
+    Create New Listing
+  </h2>
+  <app-listing-form toptext="Create" (onSubmit)="onSubmit($event)"></app-listing-form>
+
+
+  <div *ngIf="hasError">{{message}}</div>
+
+</div>

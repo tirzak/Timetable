@@ -1,0 +1,71 @@
+<h3>Search for a course</h3>
+
+<form [formGroup]="form" (ngSubmit)="onButtonClicked()">
+  <div>
+    <label for="subjectCode">
+      Subject Code:
+    </label>
+    <input id="subjectCode" name="subjectCode" maxlength="10" type="text" formControlName="subjectCode"/>
+  </div>
+  <div>
+    <label for="courseCode">
+      Course Code:
+    </label>
+  <input id="courseCode" name="courseCode" maxlength="10" type="text" formControlName="courseCode"/>
+  </div>
+  <div>
+    <label for="suffix">
+      Suffix:
+    </label>
+  <input id="suffix" name="suffix" maxlength="10" type="text" formControlName="suffix"/>
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Search</button>
+
+
+</form>
+<h3>Or Search using keywords</h3>
+<form [formGroup]="form3" (ngSubmit)="onButtonClicked2()">
+
+  <input id="keywords" name="keywords" maxlength="20" type="text" formControlName="keywords"/>
+
+
+  <button type="submit" [disabled]="!form3.valid">Search</button>
+</form>
+
+<div *ngIf="courseFound" class="timetable-view-container">
+  <div *ngFor="let timetableas of timetables; index as i" class="timetable-view" >
+    <p><b>Subject:</b> {{timetableas.subjectcode}}
+    <b>Course:</b> {{timetableas.coursecode}}
+    <b>ClassName:</b> {{timetableas.classname}}</p>
+  <div *ngFor="let timetable of timetableas.information; index as k" >
+
+    <div [class]="k==0 ? 'LEC': k==1 ?'LAB' : 'TUT'" >
+    <p>Component: {{timetable.ssr_component}}</p>
+    <p>Class Section: {{timetable.class_section}}</p>
+     <div *ngIf="expandDiv[i]" id="{{timetableas.id}}" class="expandDivs">
+      <p>Class Number: {{timetable.class_nbr}}</p>
+      <p>Duration: {{timetable.start_time}}-{{timetable.end_time}}</p>
+      <p>Days: {{timetable.days}}</p>
+      <p *ngIf="timetable.descr!=''">Description: {{timetable.descr}}</p>
+      <p>Reviews:</p>
+      <div *ngFor="let review of reviews; index as j" class="review">
+        <div *ngIf="review.review!=='' && review.reviewstatus">"{{review.review}}" by {{review.reviewer}} at {{review.stamp}}</div>
+      </div>
+      <div *ngIf="auth.user |async">
+        <form [formGroup]="form2" (ngSubmit)="addReview(timetableas.id)">
+        <label for="reviewText">
+          Enter a review:
+        </label>
+      <input id="reviewText" name="reviewText" maxlength="40" type="text" formControlName="reviewText"/>
+        <button type="submit" [disabled]="!form2.valid">Post</button>
+      </form>
+    </div>
+     </div>
+</div>
+</div>
+<button type="button" (click)="myFunction(i,timetableas.id)">Change View</button>
+</div>
+</div>
+<div *ngIf="hasError">{{message}}</div>
+

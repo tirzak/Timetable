@@ -1,0 +1,37 @@
+<h3>{{toptext}}</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="sname">Schedule Name: </label>
+    <input maxlength="10" formControlName='sname'>
+  </div>
+  <div>
+    <label for="status">
+      Visibility status:
+    </label>
+    <select id="view-status" name="status" type="text" formControlName="status" >
+      <option value="private">Private</option>
+      <option value="public">Public</option>
+
+  </select>
+  </div>
+  <div>
+    <label for="desc">Description: </label>
+    <input maxlength="30" formControlName='desc'>
+  </div>
+  <div formArrayName="items"
+    *ngFor="let item of arrayC.controls; let i = index">
+    <div [formGroupName]="i">
+      <label for="subjectCode">Subject Code: </label>
+      <input maxlength="10" formControlName='subjectCode'>
+      <label for="courseCode"> Course Code: </label>
+      <input maxlength="10" formControlName='courseCode'>
+    </div>
+  </div>
+  <button type="button" (click)="addNext()">Add Field</button>
+  <button type="button" (click)="remove()">Remove Field</button>
+  <div>
+  <button type="submit" [disabled]="!form.valid">Save Schedule</button>
+
+</div>
+</form>
+

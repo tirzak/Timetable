@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div *ngIf="newF">
+    <label for="policys">
+      Which Policy are you creating
+    </label>
+    <select id="status" name="status" type="text" formControlName="status" [value]="policyType" >
+      <option value="aup">AUP</option>
+      <option value="privacy">Privacy And Security</option>
+      <option value="dmca">DMCA</option>
+  </select>
+  </div>
+
+  <div>
+    <label for="sname">Enter </label>
+    <textarea id="sname" name="sname" rows="100" cols="100" formControlName="sname" [value]="textqqq">
+    </textarea>
+
+
+
+  </div>
+  <button type="submit" [disabled]="!form.valid">Save </button>
+
+</form>

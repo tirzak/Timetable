@@ -1,0 +1,15 @@
+
+
+
+<h1>Welcome to Time</h1>
+<div>
+<h2>About</h2>
+<p>This app lets you a build your own schedule and view public lists.</p>
+<p>You can search for course as well</p>
+</div>
+<div *ngIf="!(auth.user | async)">
+  <h3>Please sign in to use the app properly.  You do not need to sign in to view public lists</h3>
+
+</div>
+
+<app-public-list-page></app-public-list-page>

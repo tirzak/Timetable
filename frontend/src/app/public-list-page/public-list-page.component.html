@@ -1,0 +1,43 @@
+<h3>
+  Public lists
+
+</h3>
+<div *ngFor="let list of listings | slice:0:10; index as z">
+  <h3>{{z+1}}.{{list.schedulename}}</h3>
+
+  <p *ngIf="list.description!==''">Description: {{list.description}}</p>
+  <p>Last Modified: {{list.dateV}}</p>
+  <p>Number of courses: {{list.numberC}} Created by: {{list.creatorname}}</p>
+  <div *ngIf="expandDiv[z]" class="timeDiv">
+
+    <div *ngFor="let course of timeView; index as k">
+
+      <p><b>Subject Code: </b>{{course.subjectCode}} <b>Course Code:</b> {{course.courseCode}}</p>
+
+
+
+
+      <div>
+      <div>
+        <div  >
+          <div *ngFor="let timetable of times[k]; index as i ">
+          <div [class]="i==0 ? 'LEC': i==1 ?'LAB' : 'TUT'">
+          <p>Class Number: {{timetable.class_nbr}}</p>
+          <p>Duration: {{timetable.start_time}}-{{timetable.end_time}}</p>
+          <p>Component: {{timetable.ssr_component}}</p>
+          <p>Days: {{timetable.days}}</p>
+          <p>Class Section: {{timetable.class_section}}</p>
+     <p *ngIf="timetable.descr!=''">Description: {{timetable.descr}}</p>
+    </div>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div>
+    <button type="button" (click)="onViewClicked(z,list.scheduleid)">Change View</button>
+
+</div>
+</div>

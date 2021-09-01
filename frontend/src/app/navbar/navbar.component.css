@@ -1,0 +1,29 @@
+
+.top-bar a
+{
+  display: inline-block;
+  margin: .4em;
+  text-decoration: none;
+}
+.top-bar
+{
+  display: inline-block;
+  margin: .4em;
+  
+}
+.top-bar button{
+  cursor: pointer;
+}
+
+#app-heading{
+  display: inline;
+  text-decoration: none;
+}
+.top-bar a:visited{
+  text-decoration: none;
+}
+#courseview{
+  display: inline-block;
+  margin: .4em;
+  text-decoration: none;
+}
